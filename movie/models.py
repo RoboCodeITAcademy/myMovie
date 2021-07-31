@@ -34,6 +34,8 @@ class Movie(models.Model):
     year = models.PositiveIntegerField(default=0)
     country = models.CharField('Country', max_length=100)
     duration = models.CharField('Duration', max_length=100)
+    like = models.PositiveIntegerField('Likes', default=0)
+    dislike = models.PositiveIntegerField('DisLikes', default=0)
 
     class Meta:
         verbose_name_plural = 'Movies'

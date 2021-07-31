@@ -16,9 +16,21 @@
 <body>
   <nav class="grey darken-4" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Movie</a>
+        <a id="logo-container" href="/" class="brand-logo">
+            <img src="/static/img/video-camera.png" width="50" alt="">Movie
+        </a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Aloqa</a></li>
+        <li>
+            <a href="#">
+                <input
+                    type="text"
+                    onkeyup="Search(this.value)"
+                    placeholder="Search"
+                    style="color:white;"
+                >
+            </a>
+        </li>
+
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -27,7 +39,12 @@
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-
+<div class="search-block">
+    <div class="card-panel">
+        <div class="collection" id="movie-title">
+        </div>
+    </div>
+</div>
 {% block content %}
 {% endblock %}
    <footer class="page-footer grey darken-4">
