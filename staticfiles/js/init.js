@@ -41,3 +41,25 @@ function Search(value){
     xhttp.open("GET", url+`?data=${value}`, true);
     xhttp.send();
 }
+
+
+function AddLike(movie_id){
+    let like_section = document.getElementById('like')
+    movie_id = parseInt(movie_id)
+    if (window.XMLHttpRequest) {
+      var xhttp=new XMLHttpRequest();
+        } else {  // code for IE6, IE5
+            var xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+         xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            let data = JSON.parse(xhttp.responseText)
+            like_section.innerHTML = data['likes']
+        }else{
+          console.log('not yet')
+          }
+      }
+     var url = "/addlike/"
+    xhttp.open("GET", url+`?data=${movie_id}`, true);
+    xhttp.send();
+}

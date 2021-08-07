@@ -40,12 +40,24 @@
                                          data-badge-caption="dislike">
                                       {{ object.dislike }} </span>
                                 </a>
-                                    <a href="{% url 'movie:like' object.id %}">
+
+                                {% if object.slug in request.user.profile.liked_movies.all %}
+                                    <a href="#" class="disabled"
+                                    onclick="AddLike({{ object.id }})">
                                      <span class="new badge orange"
-                                           data-badge-caption="like">
+                                           data-badge-caption="like"
+                                     id="like">
                                          {{ object.like }}</span>
                                 </a>
-
+                                {% else %}
+                                  <a href="#" class=""
+                                    onclick="AddLike({{ object.id }})">
+                                     <span class="new badge orange"
+                                           data-badge-caption="like"
+                                     id="like">
+                                         {{ object.like }}</span>
+                                </a>
+                                {% endif %}
                             </li>
                           </ul>
                     </div>

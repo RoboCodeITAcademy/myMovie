@@ -29,9 +29,17 @@ def movieSearch(request):
     data['data'] = movies
     return JsonResponse(data)
 
-def addLike(request, pk):
-    print(type(pk))
-    movie = Movie.objects.get(id=pk)
+# def addLike(request, pk):
+#     print(type(pk))
+#     movie = Movie.objects.get(id=pk)
+#     movie.like += 1
+#     movie.save()
+#     return redirect('movie:detail',movie.slug)
+
+def addJSLike(request):
+    m_id = int(request.GET.get('data'))
+    movie = Movie.objects.get(id=m_id)
     movie.like += 1
     movie.save()
-    return redirect('movie:detail',movie.slug)
+    request.session['movie_id'] = movie.id
+    return JsonResponse({'likes':movie.like})
